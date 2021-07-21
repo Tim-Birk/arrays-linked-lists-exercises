@@ -122,15 +122,108 @@ class LinkedList {
 
   /** setAt(idx, val): set val at idx to val */
 
-  setAt(idx, val) {}
+  setAt(idx, val) {
+    if (this.length === 0) {
+      throw new Error('List cannot be empty');
+    }
+
+    if (!(idx >= 0 && idx < this.length)) {
+      throw new Error('index not valid');
+    }
+
+    let current = this.head;
+    let currentIdx = 0;
+    while (current !== null) {
+      if (currentIdx === idx) {
+        current.val = val;
+      }
+      current = current.next;
+      currentIdx++;
+    }
+  }
 
   /** insertAt(idx, val): add node w/val before idx. */
 
-  insertAt(idx, val) {}
+  insertAt(idx, val) {
+    if (!(idx >= 0 && idx <= this.length)) {
+      throw new Error('index not valid');
+    }
+
+    const newNode = new Node(val);
+    if (this.length === 0) {
+      // empty list
+      this.head = newNode;
+      this.tail = newNode;
+    } else if (idx === 0) {
+      // insert at beginning
+      newNode.next = this.head;
+      this.head = newNode;
+    } else if (idx >= this.length - 1) {
+      // >= in case adding the next existing index
+      // insert at end
+      this.tail.next = newNode;
+      this.tail = newNode;
+    } else {
+      // insert in middle
+      let current = this.head;
+      let currentIdx = 0;
+      while (current !== null) {
+        if (currentIdx === idx - 1) {
+          newNode.next = current.next;
+          current.next = newNode;
+          break;
+        }
+        current = current.next;
+        currentIdx++;
+      }
+    }
+    this.length++;
+  }
 
   /** removeAt(idx): return & remove item at idx, */
 
-  removeAt(idx) {}
+  removeAt(idx) {
+    if (this.length === 0) {
+      throw new Error('List cannot be empty');
+    }
+
+    if (!(idx >= 0 && idx <= this.length - 1)) {
+      throw new Error('index not valid');
+    }
+
+    let removeVal = null;
+    if (this.length === 1) {
+      // remove only value in list
+      removeVal = this.head.val;
+      this.head = null;
+      this.tail = null;
+    } else if (idx === 0) {
+      // remove at beginning
+      removeVal = this.head.val;
+      this.head = this.head.next;
+    } else {
+      // remove in middle
+      let current = this.head;
+      while (current !== null) {
+        if (currentIdx === idx - 1) {
+          removeVal = current.next.val;
+          if (currentIdx + 1 === this.length) {
+            // the tail is being removed
+            current.next = null;
+            this.tail = current;
+          } else {
+            current.next = current.next.next;
+          }
+          break;
+        }
+        current = current.next;
+        currentIdx++;
+      }
+    }
+
+    this.length--;
+    return removeVal;
+  }
 
   /** average(): return an average of all values in the list */
 

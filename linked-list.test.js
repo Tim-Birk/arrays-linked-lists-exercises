@@ -86,19 +86,19 @@ const LinkedList = require('./linked-list');
 //   });
 // });
 
-describe('setAt', function () {
-  it('sets val at index', function () {
-    let lst = new LinkedList([5, 10]);
+// describe('setAt', function () {
+//   it('sets val at index', function () {
+//     let lst = new LinkedList([5, 10]);
 
-    expect(lst.setAt(0, 1));
-    expect(lst.setAt(1, 2));
-    expect(lst.head.val).toBe(1);
-    expect(lst.head.next.val).toBe(2);
-  });
-});
+//     expect(lst.setAt(0, 1));
+//     expect(lst.setAt(1, 2));
+//     expect(lst.head.val).toBe(1);
+//     expect(lst.head.next.val).toBe(2);
+//   });
+// });
 
-// describe("insertAt", function() {
-//   it("inserts node and adjusts nearby nodes", function() {
+// describe('insertAt', function () {
+//   it('inserts node and adjusts nearby nodes', function () {
 //     let lst = new LinkedList([5, 10, 15, 20]);
 
 //     lst.insertAt(2, 12);
@@ -114,7 +114,7 @@ describe('setAt', function () {
 //     expect(lst.tail.val).toBe(25);
 //   });
 
-//   it("inserts into empty list", function() {
+//   it('inserts into empty list', function () {
 //     let lst = new LinkedList();
 
 //     lst.insertAt(0, 5);
@@ -124,9 +124,9 @@ describe('setAt', function () {
 //   });
 // });
 
-// describe("removeAt", function() {
-//   it("removes from 1-item list", function() {
-//     let lst = new LinkedList(["a"]);
+// describe('removeAt', function () {
+//   it('removes from 1-item list', function () {
+//     let lst = new LinkedList(['a']);
 
 //     lst.removeAt(0);
 //     expect(lst.length).toBe(0);
